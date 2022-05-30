@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block tittle %}
+  <tittle>Login</tittle>
+{% endblock tittle %}
+
+{% block body %}
+{% for message in messages %}
+ <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+  <strong>Message:</strong> {{message}}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %}
+<div id = "facebook"class="container">
+  <div class="card">
+      <div class="card-header">
+        <h2 class="text-center my-3">Login</h2>
+      </div>
+      <div class="card-body ">
+        <div class="container">
+          <form action='login' method='POST'>
+            {% csrf_token %}
+             <div class="mb-3">
+               <label for="signinInputusername" class="form-label">Username</label>
+               <input type="text" class="form-control" placeholder="First name" aria-label="First name"  name="username">
+             </div>
+             <div class="mb-3">
+               <label for="exampleInputPassword1" class="form-label">Password</label>
+               <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
+             </div>
+             <button type="submit" class="btn btn-outline-dark">Login</button>
+           </form>
+        </div>
+      </div>
+    </div>  
+{% endblock body %}

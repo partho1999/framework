@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block title %}Profile{% endblock title %}
+{% block body %}
+    {% for message in messages %}
+            <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+                <strong>Message:</strong> {{message}}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+
+    <div id = "facebook"class="container">
+        <div class="card">
+            <div class="card-header">
+                <h1>Profile</h1>
+            </div>
+            <div class="card-body">
+                <p>Hey..! <b>{{request.user}}</b> Welcome To Your Profile Page</p>
+                <div class="mb-3">
+                    <div>
+                        <img src="{{ my_profile.profile_img.url }}" class="rounded-circle" style="border:2px solid black" width="250">
+                    </div>  
+                    <form enctype="multipart/form-data" method="post">
+                        {% csrf_token %}
+                        <input type="file" name="user_img">
+                        <div>
+                            <button class="btn btn-outline-dark my-3" type="submit">Upload</button>
+                        </div>
+                    </form>
+                </div>
+                <div>
+                    <h5>Username: {{request.user}}</h5>
+                    <h5>Email: {{request.user.email}}</h5>
+                </div>
+            </div> 
+            
+        
+        </div>
+    </div>
+
+
+
+
+{% endblock body %}

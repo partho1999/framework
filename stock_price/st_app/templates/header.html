@@ -1,0 +1,46 @@
+<!-- navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+  <a class="navbar-brand" href="/"><img src="https://media-exp1.licdn.com/dms/image/C4E0BAQFuLGPKBn_cvw/company-logo_200_200/0/1519883435817?e=2147483647&v=beta&t=zuGKGdjtiRctW6EUibFVDa3D-o3banGq1Eb-GNyhBCY" class="rounded-circle" style="width:40px; height:40px"> </a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto text-center">
+        {% if user.is_authenticated %}
+         <li class="nav-item">
+            <a class="nav-link" style="padding-top: 13px;" aria-current="page" href="/">Home</a>
+         </li>
+         <li class="nav-item">
+           <a class="nav-link" style="padding-top: 13px;" href="#">Dashbord</a>
+         </li>
+         <li class="nav-item">
+            <a class="nav-link" style="padding-top: 13px;" href="#">Stocks</a>
+         </li>
+        
+         <li class="nav-item">
+            <div class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="{% url 'profile' user_id=user.id %}" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><img src="{{request.user.UserProfile.profile_img.url}}" class="rounded-circle" style="width:30px; height:30px"><b class="caret"></b></a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{% url 'profile' user_id=user.id %}">{{request.user}}</a>
+                <div class="divider dropdown-divider"></div>
+                  <a class="dropdown-item" href="/logout">Logout</a>
+                </div>
+            </div>
+          </li>
+        {% else %}
+          <li class="nav-item">
+            <div class="mx-1">
+              <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#registerModal">SignUp</button>
+            </div>
+          </li>
+          <li class="nav-item">
+            <div class="mx-1">
+              <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#loginModal">SignIn</button>
+            </div>
+          </li>
+        {% endif %}
+      </ul>
+  </div>
+  </div>
+</nav>

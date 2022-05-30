@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block tittle %}
+  <tittle>Register</tittle>
+{% endblock tittle %}
+
+{% block body %}
+  {% for message in messages %}
+    <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+      <strong>Message:</strong> {{message}}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  {% endfor %}
+
+  <div id = "facebook"class="container">
+    <div class="card">
+        <div class="card-header">
+          <h2 class="text-center my-3">Register</h2>
+        </div>
+        <div class="card-body">
+          <div class="container">
+            <form action='register' method='POST'>
+              {% csrf_token %}
+              <div class="row">
+                <div class="col">
+                  <label for="siugnupInputFirstName" class="form-label">First Name</label>
+                  <input type="text" class="form-control" placeholder="First name" aria-label="First name" name="firstname">
+                </div>
+                <div class="col">
+                  <label for="signupInputLastName" class="form-label">Last Name</label>
+                  <input type="text" class="form-control" placeholder="Last name" aria-label="Last name" name="lastname">
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="signupInputusername" class="form-label">Username</label>
+                <input type="text" class="form-control" placeholder="Username" aria-label="Username"  name="username">
+              </div>
+              <div class="mb-3">
+                <label for="signupInputEmail1" class="form-label">Email address</label>
+                <input type="email" class="form-control" placeholder="Email address" id="signupInputEmail1" aria-describedby="emailHelp" name="email">
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+              </div>
+              <div class="mb-3">
+                <label for="signupInputPassword1" class="form-label">Password</label>
+                <input type="password" class="form-control" placeholder="Password" id="signupInputPassword1" name="pass1">
+              </div>
+              <div class="mb-3">
+                <label for="CexampleInputPassword1" class="form-label">Confirm Password</label>
+                <input type="password" class="form-control" placeholder="Confirm Password" id="signupInputCPassword" name="pass2">
+              </div>
+              
+              <button type="submit" class="btn btn-outline-dark">Register</button>
+            </form>
+          </div>
+        </div>
+{% endblock body %}

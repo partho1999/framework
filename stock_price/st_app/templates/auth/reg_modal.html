@@ -1,0 +1,55 @@
+{% comment %} <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#registerModal">
+    Launch demo modal
+  </button> {% endcomment %}
+  
+  <!-- Modal -->
+  <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="registerModalLabel">SignUp</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="container">
+            <form  action={% url 'register' %} method='POST'> 
+              {% csrf_token %} 
+              <div class="row">
+                <div class="col">
+                  <label for="siugnupInputFirstName" class="form-label">First Name</label>
+                  <input type="text" class="form-control" placeholder="First name" aria-label="First name" name="firstname">
+                </div>
+                <div class="col">
+                  <label for="signupInputLastName" class="form-label">Last Name</label>
+                  <input type="text" class="form-control" placeholder="Last name" aria-label="Last name" name="lastname">
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="signupInputusername" class="form-label">Username</label>
+                <input type="text" class="form-control" placeholder="Username" aria-label="Username"  name="username">
+              </div>
+              <div class="mb-3">
+                <label for="signupInputEmail1" class="form-label">Email address</label>
+                <input type="email" class="form-control" placeholder="Email address" id="signupInputEmail1" aria-describedby="emailHelp" name="email">
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+              </div>
+              <div class="mb-3">
+                <label for="signupInputPassword1" class="form-label">Password</label>
+                <input type="password" class="form-control" placeholder="Password" id="signupInputPassword1" name="pass1">
+              </div>
+              <div class="mb-3">
+                <label for="CexampleInputPassword1" class="form-label">Confirm Password</label>
+                <input type="password" class="form-control" placeholder="Confirm Password" id="signupInputCPassword" name="pass2">
+              </div>
+              
+              <button type="submit" class="btn btn-outline-dark">Register</button>
+            </form>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>

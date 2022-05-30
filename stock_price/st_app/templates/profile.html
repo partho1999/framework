@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block title %}Profile{% endblock title %}
+{% block body %}
+{% load static %}
+    <style>
+        .card{
+            text-align: center;
+        }
+        .img-btn{
+            border:1px solid black;
+            border-radius: 6px;
+        }
+        .user-data{
+            text-align: left;
+            padding-left: 353px;
+        }
+        .user-data h5{
+            color: black;
+        }
+        @media only screen and (max-width: 600px) {
+            .user-data {
+            text-align: left;
+            padding-left: 21px;
+        }
+    </style>
+    <div id = "facebook"class="container">
+        <div class="card" >
+            <div class="card-header">
+                <h1 class="text-center my-3" style="color:black;">Profile</h1>
+                <a class="btn btn-outline-light" style="margin-left: 90%; margin-top: -107px;" href="/" role="button"><img src="https://teq.fra1.cdn.digitaloceanspaces.com/er_map/assets/close-icon.1b11abc1.png" class="rounded-circle" style="height: 30px; width: 30px;"></a>
+            </div>
+            <div class="card-body">
+                <p style="color:black;">Hey..! <b>{{request.user}}</b> Welcome To Your Profile Page</p>
+                <div class="mb-3">
+                    <div>
+                        <img src="{{ my_profile.profile_img.url }}" class="rounded-circle img-btn"width="250">
+                    </div>  
+                    <form enctype="multipart/form-data" method="post">
+                        {% csrf_token %}
+                        <input type="file" name="user_img">
+                        <button class="btn-outline-secondary img-btn"  type="submit">Upload</button>
+                    </form>
+                </div>
+                <div class="user-data">
+                    <h5>Username: {{request.user}}</h5>
+                    <h5>Email: {{request.user.email}}</h5>
+                </div>
+            </div> 
+            
+        
+        </div>
+    </div>
+
+
+
+
+{% endblock body %}
